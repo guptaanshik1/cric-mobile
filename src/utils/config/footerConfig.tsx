@@ -36,26 +36,26 @@ export const mainFooterConfig: TMainFooterConfig = {
 
 export const mainFooterDisplayConfig: Record<
   MainFooter,
-  {icon: ReactNode; navigateTo?: MainFooter}
+  {icon: ReactNode; label?: string; navigateTo?: MainFooter}
 > = {
   [MainFooter.HOME]: {
-    icon: <HomeIcon name="home" />,
+    icon: <HomeIcon name="home" size={20} />,
     navigateTo: MainFooter.HOME,
   },
   [MainFooter.MACTHES]: {
-    icon: <MatchesIcon name="baseball-bat" />,
+    icon: <MatchesIcon name="baseball-bat" size={20} />,
     navigateTo: MainFooter.MACTHES,
   },
   [MainFooter.VIDEOS]: {
-    icon: <VideosIcon name="playcircleo" />,
+    icon: <VideosIcon name="playcircleo" size={20} />,
     navigateTo: MainFooter.VIDEOS,
   },
   [MainFooter.NEWS]: {
-    icon: <NewsIcon name="news" />,
+    icon: <NewsIcon name="news" size={20} />,
     navigateTo: MainFooter.NEWS,
   },
   [MainFooter.MORE]: {
-    icon: <MenuIcon name="dots-three-vertical" />,
+    icon: <MenuIcon name="dots-three-vertical" size={20} />,
     navigateTo: MainFooter.MORE,
   },
 };

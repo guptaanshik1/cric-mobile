@@ -1,11 +1,11 @@
 import {ComponentType} from 'react';
 
 export enum MainFooter {
-  HOME = 'home',
-  MACTHES = 'matches',
-  VIDEOS = 'videos',
-  NEWS = 'news',
-  MORE = 'more',
+  HOME = 'Home',
+  MACTHES = 'Matches',
+  VIDEOS = 'Videos',
+  NEWS = 'News',
+  MORE = 'More',
 }
 
 export interface IFooterConfigData {
