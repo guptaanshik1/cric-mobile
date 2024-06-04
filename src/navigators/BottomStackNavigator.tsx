@@ -15,7 +15,7 @@ const BottomStackNavigator = () => {
           key={data?.label}
           name={name as MainFooter}
           component={data.component}
-          options={{header: () => <MainHeader />}}
+          options={{header: props => <MainHeader {...props} />}}
         />
       ))}
     </TabStack.Navigator>
