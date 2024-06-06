@@ -6,6 +6,7 @@ import {
   SceneRendererProps,
   TabBar,
 } from 'react-native-tab-view';
+import {headerBgColor} from '../utils/common/commonStyles';
 
 type TProps = SceneRendererProps & {navigationState: NavigationState<Route>};
 
@@ -13,13 +14,12 @@ const CustomTab = ({...props}: TProps) => {
   return (
     <TabBar
       renderLabel={({route}) => {
-        console.log({route});
         return <Text style={styles.label}>{route?.title}</Text>;
       }}
-      style={styles.tabBar}
+      style={styles.tabContainer}
       scrollEnabled={true}
       indicatorStyle={styles.indicator}
-      //   onTabPress={({route}) => handleTabPress(route)}
+      tabStyle={styles.tabBar}
       {...props}
     />
   );
@@ -28,10 +28,24 @@ const CustomTab = ({...props}: TProps) => {
 export default CustomTab;
 
 const styles = StyleSheet.create({
-  tabContainer: {},
-  tabBar: {},
-  indicator: {},
+  tabContainer: {
+    backgroundColor: headerBgColor,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderColor: 'transparent',
+    borderWidth: 0,
+    justifyContent: 'center',
+  },
+  indicator: {backgroundColor: '#FFFFFF'},
   label: {
     color: '#FFFFFF',
+    fontWeight: '700',
+    fontSize: 18,
+  },
+  tabBar: {
+    display: 'flex',
+    flexDirection: 'row',
+    flex: 1,
   },
 });
