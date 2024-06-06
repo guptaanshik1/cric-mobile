@@ -6,6 +6,7 @@ import {homeTabConfig} from '../utils/config/headerTabConfig';
 import {indexToRouteMapper} from '../utils/config/indexToRouteMapper';
 import {SceneMap, TabView} from 'react-native-tab-view';
 import CustomTab from './CustomTab';
+import {headerHeight} from '../utils/common/commonStyles';
 
 interface IProps {
   currentRouteIndex: number;
@@ -45,7 +46,7 @@ const CommonTabView = ({currentRouteIndex}: IProps) => {
       <TabView
         navigationState={{index, routes}}
         onIndexChange={setIndex}
-        renderScene={renderScene}
+        renderScene={() => null}
         initialLayout={{width: layout.width}}
         renderTabBar={props => <CustomTab {...props} />}
       />
@@ -57,7 +58,6 @@ export default CommonTabView;
 
 const styles = StyleSheet.create({
   tabParentContainer: {
-    bottom: 0,
     left: 0,
     right: 0,
     flex: 1,

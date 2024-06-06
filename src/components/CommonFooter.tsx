@@ -30,7 +30,7 @@ const CommonFooter = ({navigation}: IProps) => {
             style={styles.iconContainer}
             onPress={() =>
               footerData?.navigateTo
-                ? navigation.navigate(footerData?.navigateTo)
+                ? navigation.navigate(footerData.navigateTo)
                 : null
             }>
             {footerData.icon}

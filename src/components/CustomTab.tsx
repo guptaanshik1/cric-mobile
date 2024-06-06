@@ -7,10 +7,19 @@ import {
   TabBar,
 } from 'react-native-tab-view';
 import {headerBgColor} from '../utils/common/commonStyles';
+import {useTabStore} from '../utils/store/tabStore';
+import {
+  HomeTabs,
+  ISelectedTab,
+  TExcludedTabFooterTypes,
+  TTabs,
+} from '../utils/common/data';
 
 type TProps = SceneRendererProps & {navigationState: NavigationState<Route>};
 
 const CustomTab = ({...props}: TProps) => {
+  const {setSelectedTab} = useTabStore();
+
   return (
     <TabBar
       renderLabel={({route}) => {
@@ -20,6 +29,14 @@ const CustomTab = ({...props}: TProps) => {
       scrollEnabled={true}
       indicatorStyle={styles.indicator}
       tabStyle={styles.tabBar}
+      onTabPress={({route}) => {
+        setSelectedTab({
+          routeName: route?.title as TExcludedTabFooterTypes,
+          tabName: props?.navigationState?.routes?.find(
+            ({key}) => key === route?.key,
+          )?.title as TTabs,
+        });
+      }}
       {...props}
     />
   );

@@ -1,14 +1,26 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {useTabStore} from '../../utils/store/tabStore';
+import {tabToViewMapper} from './utils/config/tabToViewMapper';
+import {TTabs} from '../../utils/common/data';
 
 const HomeScreen = () => {
+  const {selectedTab} = useTabStore();
+
   return (
-    <View>
-      <Text>HomeScreen</Text>
+    <View style={styles.parentContainer}>
+      {tabToViewMapper[selectedTab?.routeName as TTabs]?.()}
     </View>
   );
 };
 
 export default HomeScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  parentContainer: {
+    display: 'flex',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});

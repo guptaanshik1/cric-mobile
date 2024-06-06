@@ -1,4 +1,10 @@
+import {
+  BottomTabNavigationOptions,
+  BottomTabNavigationProp,
+} from '@react-navigation/bottom-tabs';
+import {ParamListBase, RouteProp} from '@react-navigation/native';
 import {ComponentType} from 'react';
+import {Layout} from 'react-native-tab-view/lib/typescript/src/types';
 
 export enum MainFooter {
   HOME = 'Home',
@@ -26,6 +32,8 @@ export enum NewsTabs {
   TOPICS = 'TOPICS',
 }
 
+export type TTabs = HomeTabs | MatchesTab | NewsTabs;
+
 export type TExcludedTabFooterTypes = Exclude<
   MainFooter,
   MainFooter.MORE | MainFooter.VIDEOS
@@ -38,7 +46,7 @@ export interface IFooterConfigData {
 
 export interface IHeaderTabData {
   component: ComponentType<any>;
-  name: HomeTabs | MatchesTab | NewsTabs;
+  name: TTabs;
 }
 
 export type TMainFooterConfig = Record<MainFooter, IFooterConfigData>;
@@ -58,3 +66,19 @@ export interface ITabRoutesData {
   key: string;
   title: string;
 }
+
+export interface IHeaderProps {
+  layout: Layout;
+  options: BottomTabNavigationOptions;
+  route: RouteProp<ParamListBase>;
+  navigation: BottomTabNavigationProp<ParamListBase, string, undefined>;
+}
+
+export interface ISelectedTab {
+  routeName: TExcludedTabFooterTypes;
+  tabName: TTabs;
+}
+
+export type TTabToView<T extends TTabs> = {
+  [key in T]: () => React.JSX.Element;
+};
